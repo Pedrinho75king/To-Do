@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TASKS</title>
+    <title>Minhas Tarefas</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Minhas Tarefas</h1>
-    <input type="text" id="taskInput">
-    <button id="taskBtn">Adicionar</button>
-    <ul id="taskList">
-        <li>
-            <span>Café da manhã</span>
-            <button>Excluir</button>
-        </li>
-    </ul>
+    <div class="container">
+        <h1>📋 Minhas Tarefas</h1>
+        
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Digite sua tarefa...">
+            <button id="taskBtn">➕ Adicionar</button>
+        </div>
+
+        <div class="tasks-header">
+            <span>Lista de Tarefas</span>
+            <span class="task-count">0 tarefas</span>
+        </div>
+
+        <ul id="taskList">
+            <!-- Tarefas serão adicionadas aqui -->
+        </ul>
+
+        <div class="footer-actions">
+            <div class="button-group">
+                <button id="clearCompletedBtn" class="clear-completed-btn">✅ Excluir Concluídas</button>
+                <button id="clearAllBtn" class="clear-btn">🗑️ Limpar Todas</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmação para excluir concluídas -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content confirm-modal">
+            <h3>⚠️ Confirmar Exclusão</h3>
+            <p id="confirmMessage">Tem certeza que deseja excluir todas as tarefas concluídas?</p>
+            <div class="modal-buttons">
+                <button id="confirmYesBtn" class="confirm-yes-btn">✅ Sim, excluir</button>
+                <button id="confirmNoBtn" class="confirm-no-btn">❌ Cancelar</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

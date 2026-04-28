@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#taskInput:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#taskBtn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#taskBtn:hover {
+    transform: translateY(-2px);
+}
+
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.tasks-header span:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.task-count {
+    color: #667eea;
+    font-weight: bold;
+}
+
+#taskList {
+    list-style: none;
+    margin-bottom: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+    gap: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#taskList li:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+#taskList li.completed {
+    background: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    animation: completePulse 0.5s ease;
+}
+
+@keyframes completePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; background: #c8e6c9; }
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+#taskList li span {
+    flex: 1;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    word-break: break-word;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.task-buttons button {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: #333;
+}
+
+.edit-btn:hover {
+    background: #ffb300;
+    transform: scale(1.05);
+}
+
+.complete-toggle-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.complete-toggle-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.completed .complete-toggle-btn {
+    background: #ff9800;
+}
+
+.completed .complete-toggle-btn:hover {
+    background: #fb8c00;
+}
+
+.delete-btn {
+    background: #ff4757;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #ff3838;
+    transform: scale(1.05);
+}
+
+.footer-actions {
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.clear-completed-btn {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.clear-completed-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.clear-completed-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.clear-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-style: italic;
+}
+
+/* Modal de edição */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    animation: slideDown 0.3s ease;
+}
+
+.confirm-modal {
+    text-align: center;
+}
+
+.confirm-modal p {
+    margin: 20px 0;
+    color: #666;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-edit-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.save-edit-btn:hover {
+    background: #45a049;
+}
+
+.cancel-edit-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.cancel-edit-btn:hover {
+    background: #5a6268;
+}
+
+.confirm-yes-btn {
+    background: #ff4757;
+    color: white;
+}
+
+.confirm-yes-btn:hover {
+    background: #ff3838;
+}
+
+.confirm-no-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.confirm-no-btn:hover {
+    background: #5a6268;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    animation: slideInRight 0.3s ease;
+    z-index: 1001;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .input-container {
+        flex-direction: column;
+    }
+    
+    #taskBtn {
+        width: 100%;
+    }
+    
+    #taskList li {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .task-buttons {
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .button-group button {
+        width: 100%;
+    }
+}
